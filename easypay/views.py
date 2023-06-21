@@ -21,4 +21,4 @@ def getdata(requests):
     name=payments.objects.last().username
     ammount=payments.objects.last().ammount
     return HttpResponse(f"{name} {ammount}")
-'''    
+''' 
