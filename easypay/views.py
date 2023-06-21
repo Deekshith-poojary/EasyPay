@@ -16,9 +16,9 @@ def payment(request):
         return render(request,'pay_sucess.html')
     else:
         return HttpResponse("something wend wrong ")
-
+'''
 def getdata(requests):
     name=payments.objects.last().username
     ammount=payments.objects.last().ammount
     return HttpResponse(f"{name} {ammount}")
-    
+'''    
