@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPI PIN Entry</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .pin-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .pin-input {
+      width: 40px;
+      height: 40px;
+      margin: 0 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .submit-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      font-size: 16px;
+      text-align: center;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .note{
+      background-color: #333;
+      color: white;
+      text-align: center;
+      font-size: 15px;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="note">
+        <p>NOTE: This is a dummy website created by our team to demostrate the payment process for our project. You can enter any value in the given field.</p>
+    </div>
+    <h2>Enter UPI PIN</h2>
+    <div class="pin-wrapper">
+      <input type="password" class="pin-input" maxlength="1">
+      <input type="password" class="pin-input" maxlength="1">
+      <input type="password" class="pin-input" maxlength="1">
+      <input type="password" class="pin-input" maxlength="1">
+    </div>
+    <form action="payment" method="post">
+        {% csrf_token %}
+        <button type="submit"  class="submit-btn">Pay ₹{{amount}}</button>
+    </form>
+  </div>
+</body>
+</html>

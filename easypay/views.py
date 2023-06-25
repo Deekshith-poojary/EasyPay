@@ -2,23 +2,40 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import payments
 import requests
+import time
 mc_url="https://api.thingspeak.com/update?api_key=8R3CO2HRXMICK3VK&field1="
+name=""
+amount=0
+
+r_list=["fuck","lavde","land","fuckyou","randi","sex"]
+
 def index(request):
     return render(request,'index.html')
 
-def payment(request):
+def details(request):
     if request.method=='POST':
         name=request.POST.get('username')
         amount=request.POST.get('ammount')
-        requests.get(mc_url+name+"&field2="+amount)
         insertdb=payments(username=name,ammount=amount)
         insertdb.save()
+        params={'name':name , 'amount':amount}
+        for i in r_list:
+            if name==i:
+                return HttpResponse("SUCH WORDS ARE NOT ALLOWED ")
+        return render(request,'pin.html',params)
+
+def payment(request):
+    if request.method=='POST':
+        name=payments.objects.last().username
+        amount=payments.objects.last().ammount
+        requests.get(mc_url+name+"&field2="+str(amount))
+        time.sleep(3)
         return render(request,'pay_sucess.html')
     else:
-        return HttpResponse("something wend wrong ")
-'''
+        return HttpResponse("something went wrong ")
+
+
 def getdata(requests):
     name=payments.objects.last().username
     ammount=payments.objects.last().ammount
     return HttpResponse(f"{name} {ammount}")
-''' 
