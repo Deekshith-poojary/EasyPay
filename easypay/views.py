@@ -7,8 +7,6 @@ mc_url="https://api.thingspeak.com/update?api_key=8R3CO2HRXMICK3VK&field1="
 name=""
 amount=0
 
-r_list=["fuck","lavde","land","fuckyou","randi","sex"]
-
 def index(request):
     return render(request,'index.html')
 
@@ -19,9 +17,11 @@ def details(request):
         insertdb=payments(username=name,ammount=amount)
         insertdb.save()
         params={'name':name , 'amount':amount}
+        ''' 
         for i in r_list:
             if name==i:
                 return HttpResponse("SUCH WORDS ARE NOT ALLOWED ")
+        '''
         return render(request,'pin.html',params)
 
 def payment(request):
@@ -35,7 +35,8 @@ def payment(request):
         return HttpResponse("something went wrong ")
 
 
-def getdata(requests):
+def getdata(request):
     name=payments.objects.last().username
-    ammount=payments.objects.last().ammount
-    return HttpResponse(f"{name} {ammount}")
+    amount=payments.objects.last().ammount
+    param={"name":name , "amount":amount}
+    return render(request,'data.html',param)
