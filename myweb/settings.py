@@ -27,7 +27,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['.vercel.app','now.sh','127.0.0.1','localhost']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -79,11 +78,12 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': '0iLXsR4hz8dyrOuGxuqv',
-        'HOST': 'containers-us-west-107.railway.app',
-        'PORT': '8077',
+        'PASSWORD': 'GzCkMixulXwWnIPYlkex',
+        'HOST': 'containers-us-west-92.railway.app',
+        'PORT': '5526',
     }
 }
+
 
 
 # Password validation
