@@ -13,7 +13,7 @@ def index(request):
 def details(request):
     if request.method=='POST':
         name=request.POST.get('username')
-        amount=request.POST.get('ammount')
+        amount=request.POST.get('amount')
         insertdb=payments(username=name,ammount=amount)
         insertdb.save()
         params={'name':name , 'amount':amount}
